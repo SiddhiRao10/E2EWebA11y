@@ -10,7 +10,10 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/SiddhiRao10/E2EWebA11y.git'
+                script {
+                    // Manually checkout the correct branch
+                    sh 'git checkout e2e-web-demo'
+                }
             }
         }
 
@@ -36,8 +39,6 @@ pipeline {
         }
         failure {
             echo '❌ Tests failed!'
-            // You don't need to manually set currentBuild.result here — Jenkins already marks it as failed.
         }
     }
-
 }
