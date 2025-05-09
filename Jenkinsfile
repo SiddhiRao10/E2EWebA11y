@@ -19,7 +19,8 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-                sh 'mvn clean install -DskipTests'
+                sh '/Users/siddhirao/Downloads/apache-maven-3.9.9/bin/mvn clean install -DskipTests'
+
             }
         }
 
