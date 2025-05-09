@@ -26,8 +26,8 @@ pipeline {
 
         stage('Run Tests on BrowserStack') {
             steps {
-                sh 'mvn clean test -P bstack-parallel-browsers'
-            }
+                    sh '/Users/siddhirao/Downloads/apache-maven-3.9.9/bin/mvn clean test -P bstack-parallel-browsers'
+                }
         }
     }
 
