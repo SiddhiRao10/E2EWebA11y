@@ -3,8 +3,8 @@
 # =============================
 # Add your BrowserStack userName and acccessKey here or set BROWSERSTACK_USERNAME and
 # BROWSERSTACK_ACCESS_KEY as env variables
-userName: BROWSERSTACK_USERNAME
-accessKey: BROWSERSTACK_ACCESS_KEY
+userName:
+accessKey:
 
 # ======================
 # Organizing your tests
@@ -16,9 +16,9 @@ accessKey: BROWSERSTACK_ACCESS_KEY
 # Ensure you add a dynamic identifier, like an incremental build number from your
 # CI/CD or timestamp at the end of every build; otherwise tests from different
 # executions will be grouped together on BrowserStack
-buildName: End-to-End-Web-Demo
+buildName: Web-Demo-A11y-Assertion
 # Use `projectName` to set the name of your project. Example, Marketing Website
-projectName: End-to-End-Web-Demo
+projectName: Web-Demo-A11y-Assertion
 
 buildIdentifier: ${BUILD_NUMBER}
 
@@ -39,20 +39,26 @@ platforms:
     osVersion: 11
     browserName: Chrome
     browserVersion: latest
-    accessibility: true
-  - deviceName: iPhone 13
-    osVersion: 15
-    browserName: Chromium
-    deviceOrientation: portrait
-  - os: OS X
-    osVersion: Sonoma
-    browserName: Chrome
-    browserVersion: latest
-    accessibility: true
-  - deviceName: Samsung Galaxy S23 Ultra
-    osVersion: 13.0
-    browserName: chrome
-    deviceOrientation: portrait
+accessibility: true
+accessibilityOptions:
+  includeIssueType:
+      bestPractice: false # Default: false
+      needsReview: false # Default: true
+      experimental: false # Default: true
+      advanced: false
+#  - deviceName: iPhone 13
+#    osVersion: 15
+#    browserName: Chromium
+#    deviceOrientation: portrait
+#  - os: OS X
+#    osVersion: Sonoma
+#    browserName: Chrome
+#    browserVersion: latest
+#    accessibility: true
+#  - deviceName: Samsung Galaxy S23 Ultra
+#    osVersion: 13.0
+#    browserName: chrome
+#    deviceOrientation: portrait
 
 # =======================
 # Parallels per Platform
@@ -91,9 +97,9 @@ consoleLogs: errors # <string> Remote browser's console debug levels to be print
 # test observability for insights and debugging
 testObservability: true
 
-# visual testings
-percy: true
-percyCaptureMode: manual
+## visual testings
+#percy: true
+#percyCaptureMode: manual
 
 #performnace
 performance: report

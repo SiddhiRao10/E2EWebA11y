@@ -1,5 +1,6 @@
 package com.browserstack.test.suites;
 
+import com.browserstack.accessibility.AccessibilityUtils;
 import com.browserstack.test.utils.DriverUtil;
 import com.browserstack.test.utils.ScreenshotListener;
 import io.percy.selenium.Percy;
@@ -9,6 +10,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
@@ -16,6 +18,7 @@ import org.testng.annotations.Listeners;
 import java.net.URL;
 import java.time.Duration;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 @Listeners({ ScreenshotListener.class })
@@ -55,6 +58,7 @@ public class TestBase {
     @AfterMethod
     public void tearDown() {
         if (driver != null) {
+
             driver.quit();
         }
     }
