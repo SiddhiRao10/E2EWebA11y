@@ -36,7 +36,8 @@ pipeline {
         }
         failure {
             echo '❌ Tests failed!'
-            currentBuild.result = 'FAILURE'
+            // You don't need to manually set currentBuild.result here — Jenkins already marks it as failed.
         }
     }
+
 }
