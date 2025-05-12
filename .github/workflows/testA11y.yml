@@ -2,9 +2,11 @@ name: CI
 
 on:
   push:
-    branches: [ "main" ]
+    branches:
+      - main
   pull_request:
-    branches: [ "SiddhiRao10-MainA11y" ]
+    branches:
+      - SiddhiRao10-MainA11y
     paths-ignore:
       - '**.md'
   workflow_dispatch:
