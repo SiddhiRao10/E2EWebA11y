@@ -2,15 +2,28 @@ name: CI
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "patch3" ]  # Run when pushing to patch3
   pull_request:
-    branches: [ "e2e-web-demo" ]
+    branches: [ "patch1" ]  # Run when patch3 is being merged into patch1
+    paths-ignore:
+      - '**.md'
   workflow_dispatch:
 
 jobs:
-  example:
+  build:
     runs-on: ubuntu-latest
-    steps:
-      - name: Say Hello
-        run: echo "Hello from GitHub Actions!"
 
+    steps:
+      - name: 'BrowserStack Env Setup'
+        uses: browserstack/github-actions/setup-env@master
+        with:
+          username: 'dd'
+          access-key: 'ddd'
+
+      - name: 'Checkout the repository'
+        uses: actions/checkout@v4
+
+      - name: 'Running A11y test on Automate'
+        run: |
+          export BROWSERSTACK_CONFIG_FILE=src/test/resources/conf/capabilities/browserstack.yml
+          mvn clean test -P bstack-parallel-browsers
