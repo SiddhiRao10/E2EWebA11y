@@ -26,8 +26,7 @@ jobs:
       - name: 'BrowserStack Env Setup'  # Invokes the setup-env action
         uses: browserstack/github-actions/setup-env@master
         with:
-          username:  'siddhir_2cYriU'
-          access-key: 'DPWmqRzsLiq51qPqUpJN'
+        
             
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: 'Checkout the repository'
