@@ -2,15 +2,14 @@ name: CI
 
 on:
   push:
-    branches: [ "main" ]
+   
   pull_request:
-    branches: [ "e2e-web-demo" ]
+    
   workflow_dispatch:
 
 jobs:
-  build:
+  example:
     runs-on: ubuntu-latest
-
     steps:
-      - name: 'BrowserStack Env Setup'
-        uses: browserstack/github-actions/setup-env@master
+      - name: Say Hello
+        run: echo "Hello from GitHub Actions!"
