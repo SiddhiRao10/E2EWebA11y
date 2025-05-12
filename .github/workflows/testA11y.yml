@@ -23,6 +23,7 @@ jobs:
 
       - name: 'Checkout the repository'
         uses: actions/checkout@v4
+        
 
       - name: 'Running A11y test on Automate'
         run: |
