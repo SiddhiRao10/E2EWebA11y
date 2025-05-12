@@ -2,9 +2,9 @@ name: CI
 
 on:
   push:
-    branches: [ "patch3" ]  # Run when pushing to patch3
+    branches: [ "main" ]  #
   pull_request:
-    branches: [ "patch1" ]  # Run when patch3 is being merged into patch1
+    branches: [ "SiddhiRao10-MainA11y" ]  # 
     paths-ignore:
       - '**.md'
   workflow_dispatch:
