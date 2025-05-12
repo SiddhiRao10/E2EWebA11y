@@ -8,20 +8,9 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  example:
     runs-on: ubuntu-latest
-
     steps:
-      - name: 'BrowserStack Env Setup'
-        uses: browserstack/github-actions/setup-env@master
-        with:
-          username: 'abcd'
-          access-key: 'ss'
+      - name: Say Hello
+        run: echo "Hello from GitHub Actions!"
 
-      - name: 'Checkout the repository'
-        uses: actions/checkout@v4
-
-      - name: 'Running A11y test on Automate'
-        run: |
-          export BROWSERSTACK_CONFIG_FILE=src/test/resources/conf/capabilities/browserstack.yml
-          mvn clean test -P bstack-parallel-browsers
