@@ -2,9 +2,9 @@ name: CI
 
 on:
   push:
-    branches: [ "main" ]  #
+    branches: [ "main" ]
   pull_request:
-    branches: [ "SiddhiRao10-MainA11y" ]  # 
+    branches: [ "SiddhiRao10-MainA11y" ]
     paths-ignore:
       - '**.md'
   workflow_dispatch:
@@ -12,18 +12,16 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    
 
     steps:
       - name: 'BrowserStack Env Setup'
         uses: browserstack/github-actions/setup-env@master
         with:
-          username: 'dd'
-          access-key: 'ddd'
+          username: ${{ secrets.BROWSERSTACK_USERNAME }}
+          access-key: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
 
       - name: 'Checkout the repository'
         uses: actions/checkout@v4
-        
 
       - name: 'Running A11y test on Automate'
         run: |
