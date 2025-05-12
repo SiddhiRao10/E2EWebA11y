@@ -15,8 +15,8 @@ jobs:
       - name: 'BrowserStack Env Setup'
         uses: browserstack/github-actions/setup-env@master
         with:
-          username: ${{ secrets.BROWSERSTACK_USERNAME }}
-          access-key: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
+          username: 'abcd'
+          access-key: 'ss'
 
       - name: 'Checkout the repository'
         uses: actions/checkout@v4
