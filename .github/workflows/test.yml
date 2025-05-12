@@ -1,0 +1,27 @@
+name: CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "e2e-web-demo" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 'BrowserStack Env Setup'
+        uses: browserstack/github-actions/setup-env@master
+        with:
+          username: ${{ secrets.BROWSERSTACK_USERNAME }}
+          access-key: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
+
+      - name: 'Checkout the repository'
+        uses: actions/checkout@v4
+
+      - name: 'Running A11y test on Automate'
+        run: |
+          export BROWSERSTACK_CONFIG_FILE=src/test/resources/conf/capabilities/browserstack.yml
+          mvn clean test -P bstack-parallel-browsers
