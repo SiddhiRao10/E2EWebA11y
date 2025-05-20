@@ -25,5 +25,5 @@ jobs:
       - name: 'Running A11y test on Automate'
         run: |
           export BROWSERSTACK_CONFIG_FILE=src/test/resources/conf/capabilities/browserstack.yml
-          
+        
           mvn clean test -P bstack-parallel-browsers
