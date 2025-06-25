@@ -2,14 +2,13 @@ name: CI
 
 on:
   push:
-    branches: ["*"]
+    branches: [ "*" ]
   pull_request:
-    branches: ["*"]
+    branches: [ "*" ]
   workflow_dispatch:
 
 jobs:
   build:
-    name: CI / build (${{ github.event_name }})  # 👈 This ensures exact match
     runs-on: ubuntu-latest
 
     steps:
@@ -36,3 +35,4 @@ jobs:
             exit 1
           else
             echo "✅ No assertion failures found."
+          fi
