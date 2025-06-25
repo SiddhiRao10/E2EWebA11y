@@ -103,4 +103,4 @@ testObservability: true
 #percyCaptureMode: manual
 
 #performnace
-performance: report
+#performance: report
