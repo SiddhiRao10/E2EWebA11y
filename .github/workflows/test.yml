@@ -28,6 +28,7 @@ jobs:
           echo "Checking for assertion failures..."
           if grep -q "AssertionError" target/surefire-reports/*.txt; then
             echo "❌ Assertion failures detected in the test logs."
+            
             exit 1
           else
             echo "✅ No assertion failures found."
