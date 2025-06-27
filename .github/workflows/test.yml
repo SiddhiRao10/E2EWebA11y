@@ -2,7 +2,6 @@ name: CI
 on:
   pull_request:
     branches: [main]  # Only run for PRs targeting main
-
 jobs:
   build:
     name: CI / build (pull_request)  # Must match required check name
