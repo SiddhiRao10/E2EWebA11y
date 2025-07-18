@@ -1,14 +1,12 @@
 name: CI
 
 on:
-  push:
-    branches: [ "*" ]
   pull_request:
-    branches: [ "*" ]
-  workflow_dispatch:
+    branches: [main]  # Only run for PRs targeting main
 
 jobs:
   build:
+    name: CI / build (pull_request)  # Must match required check name
     runs-on: ubuntu-latest
 
     steps:
@@ -36,3 +34,4 @@ jobs:
           else
             echo "✅ No assertion failures found."
           fi
+          
