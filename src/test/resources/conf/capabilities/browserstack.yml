@@ -17,9 +17,9 @@ accessKey: BROWSERSTACK_ACCESS_KEY
 # Ensure you add a dynamic identifier, like an incremental build number from your
 # CI/CD or timestamp at the end of every build; otherwise tests from different
 # executions will be grouped together on BrowserStack
-buildName: Web-Demo-A11y-Assertion
+buildName: Github-A11y-Assertion
 # Use `projectName` to set the name of your project. Example, Marketing Website
-projectName: Web-Demo-A11y-Assertion
+projectName: Github-A11y-Assertion
 
 buildIdentifier: ${BUILD_NUMBER}
 
