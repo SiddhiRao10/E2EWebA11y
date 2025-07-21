@@ -1,14 +1,13 @@
 name: CI
 
+
 on:
-  push:
-    branches: [ "*" ]
   pull_request:
-    branches: [ "*" ]
-  workflow_dispatch:
+    branches: [main]  # Only run for PRs targeting main
 
 jobs:
   build:
+    name: CI / build (pull_request)  # Must match required check name
     runs-on: ubuntu-latest
 
     steps:
@@ -23,6 +22,7 @@ jobs:
 
       - name: 'Running A11y test on Automate'
         run: |
+          export BROWSERSTACK_RERUN=true
           export BROWSERSTACK_CONFIG_FILE=src/test/resources/conf/capabilities/browserstack.yml
           mvn clean test -P bstack-parallel-browsers
 
@@ -36,3 +36,4 @@ jobs:
           else
             echo "✅ No assertion failures found."
           fi
+          
