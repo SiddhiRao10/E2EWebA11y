@@ -1,0 +1,40 @@
+trigger:
+- e2e-web-demo   # your branch
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+- group: browserstack-secrets   # stores BROWSERSTACK_USERNAME and BROWSERSTACK_ACCESS_KEY
+
+steps:
+# Checkout repo
+- checkout: self
+
+# Install JDK
+- task: UseJavaVersion@1
+  inputs:
+    versionSpec: '11'
+    architecture: 'x64'
+
+# Install Maven dependencies
+- task: Maven@3
+  inputs:
+    mavenPomFile: 'pom.xml'
+    goals: 'clean install -DskipTests'
+
+# Run tests on BrowserStack
+- script: |
+    export BROWSERSTACK_CONFIG_FILE="src/test/resources/conf/capabilities/browserstack.yml"
+    mvn clean test -P bstack-parallel-browsers
+  env:
+    BROWSERSTACK_USERNAME: $(BROWSERSTACK_USERNAME)
+    BROWSERSTACK_ACCESS_KEY: $(BROWSERSTACK_ACCESS_KEY)
+  displayName: 'Run BrowserStack Tests'
+
+# Publish test results
+- task: PublishTestResults@2
+  inputs:
+    testResultsFiles: '**/target/surefire-reports/TEST-*.xml'
+    testResultsFormat: 'JUnit'
+    failTaskOnFailedTests: true
