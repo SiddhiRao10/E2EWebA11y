@@ -11,11 +11,11 @@ steps:
 # Checkout repo
 - checkout: self
 
-# Install JDK
-- task: UseJavaVersion@1
+# Install JDK (Java 11)
+- task: JavaToolInstaller@0
   inputs:
     versionSpec: '11'
-    architecture: 'x64'
+    jdkArchitectureOption: 'x64'
 
 # Install Maven dependencies
 - task: Maven@3
