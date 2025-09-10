@@ -25,11 +25,12 @@ steps:
 
 # Run tests on BrowserStack
 - script: |
-    export BROWSERSTACK_CONFIG_FILE="src/test/resources/conf/capabilities/browserstack.yml"
+    
     mvn clean test -P bstack-parallel-browsers
   env:
     BROWSERSTACK_USERNAME: $(BROWSERSTACK_USERNAME)
     BROWSERSTACK_ACCESS_KEY: $(BROWSERSTACK_ACCESS_KEY)
+    BROWSERSTACK_CONFIG_FILE: $(BROWSERSTACK_CONFIG_FILE)
   displayName: 'Run BrowserStack Tests'
 
 # Publish test results
